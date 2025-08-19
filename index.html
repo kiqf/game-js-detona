@@ -12,39 +12,55 @@
   <link rel="stylesheet" href="./src/styles/main.css">
 </head>
 <body>
-  <main class="container">
-    <div class="menu">
+
+  <div class="container">
+    
+    <!-- Menu -->
+    <header class="menu">
       <div class="menu-time">
-        <h2 style="color: red">Time Left</h2>
-        <h2>0</h2>
+        <h2 class="menu-title">Time Left</h2>
+        <h2 id="time-left">0</h2>
       </div>
       <div class="menu-score">
-        <h2 style="color: red">Your Score</h2>
-        <h2>0</h2>
+        <h2 class="menu-title">Your Score</h2>
+        <h2 id="score">0</h2>
       </div>
-      <div class="menu-lives">
-        <img src="" alt="">
+      <div class="menu-lives" aria-label="Vidas restantes">
+        <img src="./src/images/player.png" alt="Ícone do jogador" class="player-icon"/>
         <h2>x3</h2>
       </div>
-    </div>
-    <div class="panel">
+    </header>
+
+    <!-- Modal (escondido por padrão) -->
+    <section id="gameOverModal" class="modal" role="dialog" aria-labelledby="gameOverTitle" aria-hidden="true">
+      <div class="modal-content">
+        <h2 id="gameOverTitle">Game Over!</h2>
+        <p>O seu resultado foi: <span id="finalScore"></span></p>
+        <button id="restartBtn">Jogar novamente</button>
+      </div>
+    </section>
+
+    <!-- Painel principal -->
+    <main class="panel">
       <div class="panel-row">
-        <div class="square enemy" id="1"></div>
+        <div class="square" id="1"></div>
         <div class="square" id="2"></div>
         <div class="square" id="3"></div>
       </div>
-            <div class="panel-row">
-        <div class="square" id="4"></div>
+
+      <div class="panel-row">
+        <div class="square enemy" id="4"></div>
         <div class="square" id="5"></div>
         <div class="square" id="6"></div>
       </div>
-            <div class="panel-row">
+
+      <div class="panel-row">
         <div class="square" id="7"></div>
         <div class="square" id="8"></div>
         <div class="square" id="9"></div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <script defer src="./src/scripts/engine.js"></script>
 </body>

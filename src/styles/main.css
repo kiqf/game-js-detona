@@ -1,34 +1,145 @@
+:root {
+  --primary: #ff4c60;
+  --secondary: #ffd700;
+  --bg-dark: #000000;
+  --bg-panel-dark: #1e1e2f;
+  --bg-panel-light: #2a2a40;
+  --text-light: #f1f1f1;
+}
+
+/* Container geral */
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background-image: url("../images/wall.png");
 }
 
+/* Menu superior */
 .menu {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 90px;
   width: 100%;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  border-bottom: 5px solid var(--secondary);
 }
 
+.menu-title {
+  color: var(--primary);
+}
+
+.menu-lives {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-icon {
+  height: 60px;
+  margin-right: 0.5rem;
+}
+
+.menu-time h2:nth-child(2),
+.menu-score h2:nth-child(2) {
+  margin-top: 1rem;
+}
+
+/* Painel de jogo */
 .panel {
   margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.panel-row {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .square {
-  height: 150px;
-  width: 150px;
-  border: 1px solid #000000;
-  background-color: aquamarine;
+  width: min(30vw, 150px);
+  height: min(30vw, 150px);
+  border: 1px solid var(--bg-dark);
+  background-color: #1aeaa5;
 }
 
 .enemy {
-  background-color: black;
+  background-image: url("../images/ralph.png");
+  background-size: cover;
+}
+
+/* Modal */
+.modal {
+  display: none; /* escondido por padrão */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* garante que fique por cima do jogo */
+}
+
+.modal-content {
+  background: linear-gradient(145deg, var(--bg-panel-dark), var(--bg-panel-light));
+  color: var(--text-light);
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  max-width: 400px;
+  width: 90%;
+  animation: scaleIn 0.4s ease-out;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(255, 76, 96, 0.7);
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #d1d1e9;
+}
+
+.modal-content button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 76, 96, 0.6);
+}
+
+.modal-content button:hover {
+  background: #ff1f3d;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 76, 96, 0.8);
+}
+
+/* Animação de entrada */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
